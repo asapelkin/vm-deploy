@@ -1,0 +1,22 @@
+---
+- hosts: vms-do
+  vars_prompt:
+    - name: ovpn_pki_password
+      prompt: "Enter OpenVPN RSA passphrase"
+    - name: ovpn_pem_password
+      prompt: "Enter OpenVPN PEM file passphrase"
+    - name: dns_hostname
+      prompt: "Enter hostname"
+    - name: hldns_hash
+      prompt: "Enter hldns hash"
+
+  remote_user: root
+
+  tasks:
+  - include_tasks: setup-hldns.yaml
+
+  - name: Install docker
+    apt:
+      name: docker.io
+
+  - include_tasks: setup-openvpn.yaml

@@ -1,0 +1,12 @@
+
+- name: Create hldns updater
+  template:
+    src: resources/hldns-registator.sh
+    dest: /etc/init.d/hldns-registator.sh
+    owner: root
+    mode: '0755'
+
+- name: update-rc hldns-registator
+  command: update-rc.d hldns-registator.sh defaults
+
+
