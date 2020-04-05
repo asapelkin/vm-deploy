@@ -1,0 +1,24 @@
+---
+- hosts: vms-do
+  vars_prompt:
+    - name: dante_username
+      prompt: "Enter proxy username"
+    - name: dante_password
+      prompt: "Enter proxy password"
+
+  remote_user: root
+
+  tasks:
+
+  - name: Start Socks5 dante daemon
+    docker_container:
+      name: socks5-dante
+      image: asapelkin/docker-dante
+      detach: yes
+      restart_policy: always
+      command: sockd-username
+      ports:
+        - "1080:1080"
+      env:
+        SOCKD_USER_NAME: "{{ dante_username }}"
+        SOCKD_USER_PASSWORD: "{{ dante_password }}"

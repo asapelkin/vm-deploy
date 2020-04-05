@@ -3,8 +3,6 @@
   vars_prompt:
     - name: ovpn_pki_password
       prompt: "Enter OpenVPN RSA passphrase"
-    - name: ovpn_pem_password
-      prompt: "Enter OpenVPN PEM file passphrase"
     - name: dns_hostname
       prompt: "Enter hostname"
     - name: hldns_hash
