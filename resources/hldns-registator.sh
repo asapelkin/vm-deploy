@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /usr/bin/env bash
 ### BEGIN INIT INFO
 # Provides:        hldns-registrator
 # Required-Start:    \$local_fs \$syslog
